@@ -16,7 +16,7 @@ module.exports = function(grunt) {
     var filepaths = grunt.file.expandFiles(this.file.src);
     grunt.file.clearRequireCache(filepaths);
 
-    var paths = filepaths.map(path.resolve),
+    var paths = filepaths.map(function(p) { return path.resolve(p); }),
         options = this.data.options || {},
         mocha_instance = new Mocha(options);
 
